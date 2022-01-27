@@ -1,19 +1,20 @@
 name: React CI
 
 on:
- push:
-  branches:
-    - "master"
+  push:
+    branches:
+      - "master"
 
 jobs:
   build:
-     run-on: ubuntu-latest
-     strategy:
-       matrix:
-        node-version: [15.x]
+    runs-on: ubuntu-latest
 
-     steps:
-      - user: pankaj9901
+    strategy:
+      matrix:
+        node-version: [15.x]
+    
+    steps:
+      - uses: actions/checkout@v1
       - run: npm install
       - run: npm run build
-      - run: npm test      
+      - run: npm test
